@@ -1,10 +1,13 @@
 package test.streams;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
+import javax.print.attribute.standard.PrinterLocation;
 
 import test.common.Person;
 
@@ -28,7 +31,7 @@ public class TestStreams {
 		filterPersonStreamByAge();
 		filterPersonParallelStreamByAge();
 		*/
-		//delta_encode(new int[] {8,25626,25757,24367,24267,16,100,2,7277});
+		primitiveIntegerListToIntArray();
 	}
 	
 	private static void filterPersonByAge() {
@@ -74,5 +77,15 @@ public class TestStreams {
 		System.out.format("%1s Time: %2d ms - %3s\n", methodId, duration, additionalText);
 		//System.out.printf(format, args)
 		System.out.println((int)Byte.MAX_VALUE);
+	}
+	
+	private static void primitiveIntegerListToIntArray(){
+		List<Integer> integerList = new ArrayList<>();
+		integerList.add(5);
+		integerList.add(6);
+		integerList.add(7);
+		integerList.add(10);
+		int[] intArray = integerList.stream().mapToInt((inumber) -> {return inumber.intValue();}).toArray();
+		Arrays.stream(intArray).forEach(System.out::println);
 	}
 }
