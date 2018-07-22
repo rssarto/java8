@@ -28,7 +28,7 @@ public class TestStreams {
 		filterPersonStreamByAge();
 		filterPersonParallelStreamByAge();
 		*/
-		delta_encode(new int[] {8,25626,25757,24367,24267,16,100,2,7277});
+		//delta_encode(new int[] {8,25626,25757,24367,24267,16,100,2,7277});
 	}
 	
 	private static void filterPersonByAge() {
