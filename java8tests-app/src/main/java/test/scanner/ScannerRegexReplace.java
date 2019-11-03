@@ -22,6 +22,10 @@ public class ScannerRegexReplace {
             "                \"configurable\": false,\n" +
             "                \"moveable\": false,\n" +
             "                \"mirrorOn\": {\n" +
+            "                \"showOn\": {\n" +
+            "                    \"dependentId\": \"afe4c796-1f5b-43ae-a8e5-d92420d483ce\",\n" +
+            "                    \"values\": [\"Yes\"]\n" +
+            "                }," +
             "                \"dependentFields\": [\"143d3314-43b2-4711-899f-843e223d1128\", \"db63dccf-bcb3-4c3a-860f-925ef5a94180\"],\n" +
             "                    \"dependentId\": \"c7ea1608-eb4b-4859-9bd3-1dd8989e74e6\",\n" +
             "                    \"values\": [\"Yes\"],\n" +
@@ -38,6 +42,8 @@ public class ScannerRegexReplace {
         uuidMap.put(UUID.fromString("fa14291d-3d77-41f6-9e09-e720404921af"), UUID.fromString("07d674ac-fe2b-11e9-8f0b-362b9e155667"));
         uuidMap.put(UUID.fromString("143d3314-43b2-4711-899f-843e223d1128"), UUID.fromString("07d67704-fe2b-11e9-8f0b-362b9e155667"));
         uuidMap.put(UUID.fromString("db63dccf-bcb3-4c3a-860f-925ef5a94180"), UUID.fromString("07d67b00-fe2b-11e9-8f0b-362b9e155667"));
+        uuidMap.put(UUID.fromString("afe4c796-1f5b-43ae-a8e5-d92420d483ce"), UUID.fromString("1b011b35-20a3-490d-8d97-2aac9c162267"));
+
 
         try {
             jsonNode = objectMapper.readTree(jsonString);
