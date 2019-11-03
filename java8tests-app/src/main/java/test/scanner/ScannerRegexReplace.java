@@ -33,7 +33,19 @@ public class ScannerRegexReplace {
             "                },\n" +
             "                \"hasOther\": false\n" +
             "            }";
+
+    private static final String jsonWithNoRef = "{\n" +
+            "                \"row\": 1,\n" +
+            "                \"column\": 4,\n" +
+            "                \"colSpan\": 1,\n" +
+            "                \"maxLength\": 100,\n" +
+            "                \"editable\": true,\n" +
+            "                \"configurable\": false,\n" +
+            "                \"moveable\": false,\n" +
+            "                \"hasOther\": false\n" +
+            "            }";
     private static JsonNode jsonNode = null;
+    private static JsonNode jsonNodeNoRef = null;
     private static final Pattern uuidRegexPattern = Pattern.compile("[0-9a-fA-F]{8}\\-[0-9a-fA-F]{4}\\-[0-9a-fA-F]{4}\\-[0-9a-fA-F]{4}\\-[0-9a-fA-F]{12}");
     private static final ObjectMapper objectMapper = new ObjectMapper();
 
@@ -47,6 +59,7 @@ public class ScannerRegexReplace {
 
         try {
             jsonNode = objectMapper.readTree(jsonString);
+            jsonNodeNoRef = objectMapper.readTree(jsonWithNoRef);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
@@ -75,10 +88,17 @@ public class ScannerRegexReplace {
     }
 
     public static void main(String[] args) throws JsonProcessingException {
-        System.out.println("================= INIT JSON PARSER =================");
+        System.out.println("================= INIT JSON WITH REF PARSER =================");
         System.out.println(jsonNode.toPrettyString());
         final JsonNode updatedJsonNode = updateFieldReferencesFound(ScannerRegexReplace.jsonNode, uuidMap);
         System.out.println(updatedJsonNode.toPrettyString());
-        System.out.println("=================  END JSON PARSER =================");
+        System.out.println("=================  END JSON WITH REF PARSER =================");
+        System.out.println("\n");
+        System.out.println("\n");
+        System.out.println("================= INIT JSON WITH NO REF PARSER =================");
+        System.out.println(jsonNodeNoRef.toPrettyString());
+        final JsonNode updatedJsonNodeNoRef = updateFieldReferencesFound(ScannerRegexReplace.jsonNodeNoRef, uuidMap);
+        System.out.println(updatedJsonNodeNoRef.toPrettyString());
+        System.out.println("================= END JSON WITH NO REF PARSER =================");
     }
 }
