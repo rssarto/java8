@@ -81,7 +81,8 @@ public class ScannerRegexReplace {
         final Matcher matcher = uuidRegexPattern.matcher(jsonString);
         final StringBuilder result = new StringBuilder();
         while(matcher.find()){
-            matcher.appendReplacement(result, uuidMap.get(UUID.fromString(matcher.group())).toString());
+            matcher.appendReplacement(result,
+                    uuidMap.get(UUID.fromString(matcher.group())).toString());
         }
         matcher.appendTail(result);
         return objectMapper.readTree(result.toString());
