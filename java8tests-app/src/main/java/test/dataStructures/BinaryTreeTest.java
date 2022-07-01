@@ -15,6 +15,7 @@ public class BinaryTreeTest {
         System.out.println(String.format("Size: %d", binaryTree.getSize()));
         System.out.println("Sorted list asc: " + binaryTree.sort(BinaryTree.SortDirection.ASC));
         System.out.println("Sorted list desc: " + binaryTree.sort(BinaryTree.SortDirection.DESC));
+        System.out.println(String.format("Find %d: %s", 45, binaryTree.find(45)));
     }
 
     private static class Node {
@@ -24,6 +25,15 @@ public class BinaryTreeTest {
 
         public Node(int value) {
             this.value = value;
+        }
+
+        @Override
+        public String toString() {
+            return "Node{" +
+                    "value=" + value +
+                    ", left=" + left +
+                    ", right=" + right +
+                    '}';
         }
     }
 
@@ -102,6 +112,27 @@ public class BinaryTreeTest {
             }
 
             return sortedList;
+        }
+
+        private Node find(int value, Node node){
+            if(value == node.value){
+                return node;
+            }
+
+            if(value < node.value){
+                if(node.left != null){
+                    return find(value, node.left);
+                }
+            }else{
+                if(node.right != null){
+                    return find(value, node.right);
+                }
+            }
+            throw new RuntimeException("Not found");
+        }
+
+        public Node find(int value){
+            return find(value, root);
         }
     }
 }
